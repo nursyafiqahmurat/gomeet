@@ -8,38 +8,28 @@
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
         
-    <title>Doctor</title>
+    <title>PEGAWAI</title>
     <style>
         .popup{
             animation: transitionIn-Y-bottom 0.5s;
         }
-</style>
+    </style>
 </head>
 <body>
     <?php
-
-    //learn from w3schools.com
-
     session_start();
 
     if(isset($_SESSION["user"])){
         if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){
             header("location: ../login.php");
         }
-
     }else{
         header("location: ../login.php");
     }
-    
-    
 
-    //import database
     include("../connection.php");
 
-
-
     if($_POST){
-        //print_r($_POST);
         $result= $database->query("select * from webuser");
         $name=$_POST['name'];
         $nic=$_POST['nic'];
@@ -63,27 +53,19 @@
 
                 //echo $sql1;
                 //echo $sql2;
-                $error= '4';
-                
+                $error= '4';   
             }
             
         }else{
             $error='2';
         }
-    
-    
-        
-        
+                
     }else{
         //header('location: signup.php');
         $error='3';
     }
     
-
-    header("location: doctors.php?action=add&error=".$error);
+    header("location: pegawai.php?action=add&error=".$error);
     ?>
-    
-   
-
 </body>
 </html>
